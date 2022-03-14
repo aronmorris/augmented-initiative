@@ -4,6 +4,7 @@
   "description": "Adds HP, Structure, Stress to the combat tracker",
   "version": "This is auto replaced",
   "library": "false",
+  "system": ["lancer"],
   "manifestPlusVersion": "1.0.0",
   "minimumCoreVersion": "9",
   "compatibleCoreVersion": "9",
