@@ -28,13 +28,10 @@
     
   ],
   "esmodules": [
-    "/scripts/module.js"
-  ],
-  "scripts": [
-    "/scripts/lib/lib.js"
+    "scripts/module.js"
   ],
   "styles": [
-    "/styles/module.css"
+    "styles/module.css"
   ],
   "languages": [
     {
