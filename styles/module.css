@@ -1,18 +1,34 @@
-.token-stats {  display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+.token-stats {
+    white-space: nowrap;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
     gap: 0px 0px;
     grid-auto-flow: row;
     grid-template-areas:
-    "token-stats-hp token-stats-structure ."
-    "token-stats-heat token-stats-stress ."
-    ". . .";
+    "token-stats-hp token-stats-structure"
+    "token-stats-heat token-stats-stress";
 }
 
-.token-stats-hp { grid-area: token-stats-hp; }
+.token-stats-text {
+    font-family: var(--main-font-family);
+    font-weight: bold !important;
+    font-size: medium !important;
+}
 
-.token-stats-structure { grid-area: token-stats-structure; }
+.token-stats-hp {
+    grid-area: token-stats-hp;
+}
 
-.token-stats-heat { grid-area: token-stats-heat; }
+.token-stats-structure {
+    grid-area: token-stats-structure;
+}
 
-.token-stats-stress { grid-area: token-stats-stress; }
+.token-stats-heat {
+    grid-area: token-stats-heat;
+}
+
+.token-stats-stress {
+    grid-area: token-stats-stress;
+}

@@ -1,33 +1,50 @@
-Hooks.once('init', async function () {
-    console.log("Augmented Initiative | Ready!")
-});
-
 Hooks.once('ready', async function () {
     console.log("Augmented Initiative | Ready!")
 });
 
-Hooks.on("renderCombatTracker", async (app, html, data) => {
-    let combatantsDOM = html[0].querySelectorAll("li.combatant");
-    let combatants = game.combat.combatants;
-    combatantsDOM.forEach(el => {
-        const actorData = getCombatantActorData(combatants.get(el.dataset.combatantId).data.actorId);
-        let html =
-            `<div class=\"token-stats\">
-                <div class="token-stats-hp mdi mdi-heart-outline">${actorData.hp}</div>
-                <div class="token-stats-structure cci cci-structure">${actorData.structure}</div>
-                <div class="token-stats-heat cci cci-heat">${actorData.heat}</div>
-                <div class="token-stats-stress cci cci-reactor">${actorData.stress}</div>
-            </div>`;
+Hooks.on("updateActor", async (actor, data, options, userId) => {
+    if (!game.user?.isGM) return;
+    console.log("Augmented Initiative caught this updateActor event");
+    if (game.combat && game.combat.isActive) {
+        console.log("Ok, this works");
+    }
+})
 
-        el.querySelector("div.token-initiative").before($.parseHTML(html)[0]);
+Hooks.on("renderCombatTracker", async (app, html, data) => {
+    if (!game.user?.isGM) return;
+
+    let combatantsDOM = html[0].querySelectorAll("li.combatant");
+    combatantsDOM.forEach(el => {
+        const actorData = getCombatantActorData(el.dataset.combatantId);
+        el.querySelector("div.token-initiative").before(
+            $.parseHTML(getReadyHtml(actorData.hp, actorData.structure, actorData.heat, actorData.stress))[0]
+        );
     });
-    combatantsDOM.forEach(el => console.log("AUG | " + JSON.stringify(
-        getCombatantActorData(combatants.get(el.dataset.combatantId).data.actorId).hp))
-    );
 });
 
-function getCombatantActorData(actorId) {
-    return game.actors.get(actorId).data.data;
+function getCombatantActorData(combatantId) {
+    return game.combat.combatants.get(combatantId).actor.data.data;
+}
+
+function getReadyHtml(hp, structure, heat, stress) {
+    return `<div class="token-stats flex-center">
+                <div class="token-stats-hp">
+                    <i class="token-stats-text  mdi mdi-heart-outline"></i>
+                    <span class="token-stats-text">${hp}</span>
+                </div>
+                <div class="token-stats-structure">
+                    <i class="token-stats-text cci cci-structure"></i>
+                    <span class="token-stats-text">${structure}</span>
+                </div>
+                <div class="token-stats-heat">
+                <i class="token-stats-text cci cci-heat"></i>
+                    <span class="token-stats-text">${heat}</span>
+                </div>
+                <div class="token-stats-stress">
+                <i class="token-stats-text cci cci-reactor"></i>
+                    <span class="token-stats-text">${stress}</span>
+                </div>
+            </div>`;
 }
 
 //Need to fetch the data for each combatant in the combat tracker, then display it next to the clickable
@@ -39,5 +56,5 @@ function getCombatantActorData(actorId) {
 //Step 2:
 //Inject character data in there CHECK, WE GOT DATA
 
-//Step 3?:
-//Make the field pretty, editable, whatever
+//Step 3:
+//Make the field pretty. We need FONTS and to know WHERE THE ICONS COME FROM. Ask Eranziel.
