@@ -2,9 +2,9 @@
     white-space: nowrap;
     align-items: center;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 0px 0px;
+    grid-template-columns: .25fr .25fr;
+    grid-template-rows: .25fr .25fr;
+    gap: 0px 10px;
     grid-auto-flow: row;
     grid-template-areas:
     "token-stats-hp token-stats-structure"
@@ -14,7 +14,7 @@
 .token-stats-text {
     font-family: var(--main-font-family);
     font-weight: bold !important;
-    font-size: medium !important;
+    font-size: small !important;
 }
 
 .token-stats-hp {
