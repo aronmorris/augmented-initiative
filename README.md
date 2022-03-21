@@ -66,6 +66,7 @@ Clicking "Save" in the bottom right will save the new version, which means that 
 
 # FoundryVTT Module
 
-Does something, probably
+This module displays the HP, Structure, Heat, and Reactor Stress of each combatant in the Lancer combat tracker,
+defaulting to 0 when none is provided.
 
 ## Changelog

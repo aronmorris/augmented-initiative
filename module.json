@@ -1,7 +1,7 @@
 {
   "name": "augmented-initiative",
   "title": "Augmented Initiative",
-  "description": "Adds HP, Structure, Stress to the combat tracker",
+  "description": "Adds HP, Structure, Heat, Stress to the combat tracker",
   "version": "This is auto replaced",
   "library": "false",
   "system": ["lancer"],
@@ -14,8 +14,7 @@
     },
     {
       "name": "The League of Extraordinary FVTT Developers",
-      "url": "https://github.com/League-of-Foundry-Developers",
-      "discord": "discordID#0001"
+      "url": "https://github.com/League-of-Foundry-Developers"
     }
   ],
   "dependencies": [
@@ -32,13 +31,6 @@
   ],
   "styles": [
     "styles/module.css"
-  ],
-  "languages": [
-    {
-      "lang": "en",
-      "name": "English",
-      "path": "languages/en.json"
-    }
   ],
   "url": "This is auto replaced",
   "manifest": "This is auto replaced",

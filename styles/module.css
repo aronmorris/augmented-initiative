@@ -11,18 +11,26 @@
     "token-stats-heat token-stats-stress";
 }
 
-.token-stats-text {
+.token-stats-icon {
+    font-size: large !important;
     font-family: var(--main-font-family);
     font-weight: bold !important;
+}
+
+.token-stats-text {
     font-size: small !important;
+    font-family: var(--main-font-family);
+    font-weight: inherit;
 }
 
 .token-stats-hp {
     grid-area: token-stats-hp;
+    margin-bottom: -18px;
 }
 
 .token-stats-structure {
     grid-area: token-stats-structure;
+    margin-bottom: -22px;
 }
 
 .token-stats-heat {

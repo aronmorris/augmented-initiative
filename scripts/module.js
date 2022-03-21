@@ -28,21 +28,21 @@ function getCombatantActorData(combatantId) {
 }
 
 function getReadyHtml(hp, structure, heat, stress) {
-    return `<div class="token-stats flexrow">
+    return `<div class="token-stats flex-center">
                 <div class="token-stats-hp">
-                    <i class="token-stats-text  mdi mdi-heart-outline"></i>
+                    <i class="token-stats-icon mdi mdi-heart-outline"></i>
                     <span class="token-stats-text">${hp}</span>
                 </div>
                 <div class="token-stats-structure">
-                    <i class="token-stats-text cci cci-structure"></i>
+                    <i class="token-stats-icon cci cci-structure"></i>
                     <span class="token-stats-text">${structure}</span>
                 </div>
                 <div class="token-stats-heat">
-                <i class="token-stats-text cci cci-heat"></i>
+                <i class="token-stats-icon cci cci-heat"></i>
                     <span class="token-stats-text">${heat}</span>
                 </div>
                 <div class="token-stats-stress">
-                <i class="token-stats-text cci cci-reactor"></i>
+                <i class="token-stats-icon cci cci-reactor"></i>
                     <span class="token-stats-text">${stress}</span>
                 </div>
             </div>`;
