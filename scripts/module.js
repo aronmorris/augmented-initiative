@@ -14,10 +14,10 @@ Hooks.on("renderCombatTracker", async (app, html) => {
         const actorData = getCombatantActorData(el.dataset.combatantId);
         el.querySelector("div.token-initiative").before(
             $.parseHTML(getReadyHtml(
-                actorData.hp ?? 0,
-                actorData.structure ?? 0,
-                actorData.heat ?? 0,
-                actorData.stress ?? 0)
+                actorData.hp,
+                actorData.structure,
+                actorData.heat,
+                actorData.stress)
             )[0]
         );
     });
@@ -28,22 +28,33 @@ function getCombatantActorData(combatantId) {
 }
 
 function getReadyHtml(hp, structure, heat, stress) {
-    return `<div class="token-stats flex-center">
-                <div class="token-stats-hp">
-                    <i class="token-stats-icon mdi mdi-heart-outline"></i>
-                    <span class="token-stats-text">${hp}</span>
-                </div>
-                <div class="token-stats-structure">
+    console.log("AUGMENTED | Getting HTML");
+    let html = `<div class="token-stats flex-center">`;
+    if (typeof hp !== 'undefined') {
+        html += (`<div class="token-stats-hp">
+            <i class="token-stats-icon mdi mdi-heart-outline"></i>
+            <span class="token-stats-text">${hp}</span>
+        </div>`);
+    }
+    if (typeof structure !== 'undefined') {
+        html += (`<div class="token-stats-structure">
                     <i class="token-stats-icon cci cci-structure"></i>
                     <span class="token-stats-text">${structure}</span>
-                </div>
-                <div class="token-stats-heat">
+                </div>`);
+    }
+    if (typeof heat !== 'undefined') {
+        html += (`<div class="token-stats-heat">
                 <i class="token-stats-icon cci cci-heat"></i>
                     <span class="token-stats-text">${heat}</span>
-                </div>
-                <div class="token-stats-stress">
+                </div>`)
+    }
+    if (typeof stress !== 'undefined') {
+        html += (`<div class="token-stats-stress">
                 <i class="token-stats-icon cci cci-reactor"></i>
                     <span class="token-stats-text">${stress}</span>
-                </div>
-            </div>`;
+                </div>`)
+    }
+    html += (`</div>`);
+
+    return html;
 }
