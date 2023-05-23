@@ -4,28 +4,33 @@
   "description": "Adds HP, Structure, Heat, Stress to the combat tracker",
   "version": "This is auto replaced",
   "library": "false",
-  "system": ["lancer"],
   "manifestPlusVersion": "1.0.0",
-  "minimumCoreVersion": "9",
-  "compatibleCoreVersion": "9",
+  "compatibility": {
+    "minimum": "9",
+    "verified": "9"
+  },
   "authors": [
-    {"name":"Aron Morris",
-    "url":"https://github.com/aronmorris"
+    {
+      "name": "Aron Morris",
+      "url": "https://github.com/aronmorris"
     },
     {
       "name": "The League of Extraordinary FVTT Developers",
       "url": "https://github.com/League-of-Foundry-Developers"
     }
   ],
-  "dependencies": [
-    {
-      "name": "lancer",
-      "type": "system"
-    }
-  ],
-  "conflicts": [
-    
-  ],
+  "relationships": {
+    "requires": [
+      {
+        "id": "lancer",
+        "type": "system"
+      }
+    ],
+    "system": [
+      "lancer"
+    ]
+  },
+  "conflicts": [],
   "esmodules": [
     "scripts/module.js"
   ],
